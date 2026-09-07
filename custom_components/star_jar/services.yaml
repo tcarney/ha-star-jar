@@ -1,0 +1,56 @@
+award:
+  target:
+    entity:
+      integration: star_jar
+  fields:
+    stars:
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 10
+          mode: box
+    reason:
+      required: true
+      example: "making the bed"
+      selector:
+        text:
+    source:
+      required: true
+      example: "chore"
+      selector:
+        text:
+
+adjust:
+  target:
+    entity:
+      integration: star_jar
+  fields:
+    stars:
+      required: true
+      example: -2
+      selector:
+        number:
+          min: -100
+          max: 100
+          mode: box
+    reason:
+      required: true
+      example: "physical jar recount"
+      selector:
+        text:
+    source:
+      example: "adjust"
+      selector:
+        text:
+
+redeem:
+  target:
+    entity:
+      integration: star_jar
+  fields:
+    reward:
+      required: true
+      example: "movie night"
+      selector:
+        text:
