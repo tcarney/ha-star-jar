@@ -1,0 +1,103 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add a star jar",
+        "description": "One jar per child. The name prefixes every entity, so \"Robin\" gives sensor.robin_star_jar.",
+        "data": {
+          "child_name": "Child's name"
+        }
+      }
+    },
+    "error": {
+      "invalid_name": "The name cannot be empty."
+    },
+    "abort": {
+      "already_configured": "A star jar with this name already exists."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Star jar options",
+        "data": {
+          "jar_size": "Stars to fill the jar",
+          "ai_task_entity": "AI Task entity for narration",
+          "instructions": "Narration instructions"
+        },
+        "data_description": {
+          "jar_size": "Applies at the next award. Lowering it below the current count earns one or more rewards on that award.",
+          "ai_task_entity": "Leave empty for plain messages only.",
+          "instructions": "The voice the model writes in. It is asked for words only, never a number."
+        }
+      }
+    }
+  },
+  "services": {
+    "award": {
+      "name": "Award stars",
+      "description": "Grant stars to the jar. A full jar becomes one reward, carrying overflow.",
+      "fields": {
+        "stars": {
+          "name": "Stars",
+          "description": "How many stars, 1 to 10."
+        },
+        "reason": {
+          "name": "Reason",
+          "description": "What earned them. Shown to the child and kept in the ledger."
+        },
+        "source": {
+          "name": "Source",
+          "description": "Which detector or person awarded them, e.g. chore, bedtime, parent."
+        }
+      }
+    },
+    "adjust": {
+      "name": "Adjust stars",
+      "description": "Reconcile the jar by a signed number of stars. Negative never drops below zero and never takes back a reward.",
+      "fields": {
+        "stars": {
+          "name": "Stars",
+          "description": "Signed delta, not zero."
+        },
+        "reason": {
+          "name": "Reason",
+          "description": "Why the count is being corrected."
+        },
+        "source": {
+          "name": "Source",
+          "description": "Defaults to adjust."
+        }
+      }
+    },
+    "redeem": {
+      "name": "Redeem a reward",
+      "description": "Spend one reward. Fails when none is available.",
+      "fields": {
+        "reward": {
+          "name": "Reward",
+          "description": "What the jar bought."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "star_jar": {
+        "name": "Star jar"
+      },
+      "stars_today": {
+        "name": "Stars today"
+      },
+      "rewards_available": {
+        "name": "Rewards available"
+      },
+      "rewards_redeemed": {
+        "name": "Rewards redeemed"
+      },
+      "star_message": {
+        "name": "Star message"
+      }
+    }
+  }
+}

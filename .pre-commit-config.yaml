@@ -1,0 +1,38 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+#
+# This configuration uses local hooks that rely on packages
+# installed in the virtual environment (via requirements.txt).
+#
+# The hooks use the currently activated virtual environment or fall back
+# to the standard location at $HOME/.local/ha-venv.
+#
+repos:
+  - repo: local
+    hooks:
+      # Lint + format (delegates to script/lint for auto-fix behavior).
+      - id: lint
+        name: lint
+        entry: ./script/lint
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      # Spell checking (delegates to script/spell-check).
+      - id: spell-check
+        name: spell-check
+        entry: ./script/spell-check
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      # Type checking with Pyright (optional, can be slow)
+      # Uncomment to enable in pre-commit (recommended to use in IDE instead)
+      # - id: pyright
+      #   name: pyright
+      #   entry: bash -c '"$HOME/.local/ha-venv/bin/pyright" "$@"' --
+      #   language: system
+      #   types: [python]
+      #   pass_filenames: true
+      #   # Run manually with: pre-commit run pyright --all-files
+      #   stages: [manual]
