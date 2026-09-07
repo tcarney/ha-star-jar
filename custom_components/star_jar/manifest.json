@@ -1,0 +1,13 @@
+{
+  "domain": "star_jar",
+  "name": "Star Jar",
+  "after_dependencies": ["ai_task", "lovelace"],
+  "codeowners": ["@tcarney"],
+  "config_flow": true,
+  "dependencies": ["frontend", "http"],
+  "documentation": "https://github.com/tcarney/ha-star-jar",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/tcarney/ha-star-jar/issues",
+  "version": "0.1.0"
+}
